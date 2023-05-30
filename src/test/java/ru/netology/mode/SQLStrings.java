@@ -6,18 +6,18 @@ public class SQLStrings {
     }
 
     public static String card_transactionsDrop() {
-        return  "DROP TABLE IF EXISTS card_transactions;";
+        return "DROP TABLE IF EXISTS card_transactions;";
     }
 
     public static String auth_codesDrop() {
-        return  "DROP TABLE IF EXISTS auth_codes;";
+        return "DROP TABLE IF EXISTS auth_codes;";
     }
 
     public static String cardsDrop() {
-        return  "DROP TABLE IF EXISTS cards;";
+        return "DROP TABLE IF EXISTS cards;";
     }
 
-    public static String createTableUsers (){
+    public static String createTableUsers() {
         return "CREATE TABLE users\n" +
                 "(\n" +
                 "    id       CHAR(36) PRIMARY KEY,\n" +
@@ -26,7 +26,8 @@ public class SQLStrings {
                 "    status   VARCHAR(255)        NOT NULL DEFAULT 'active'\n" +
                 ");";
     }
-    public static String createTableCards (){
+
+    public static String createTableCards() {
         return "CREATE TABLE cards\n" +
                 "(\n" +
                 "    id                 CHAR(36) PRIMARY KEY,\n" +
@@ -36,7 +37,8 @@ public class SQLStrings {
                 "    FOREIGN KEY (user_id) REFERENCES users (id)\n" +
                 ");";
     }
-    public static String createTableAuthCodes (){
+
+    public static String createTableAuthCodes() {
         return "CREATE TABLE auth_codes\n" +
                 "(\n" +
                 "    id      CHAR(36) PRIMARY KEY,\n" +
@@ -46,7 +48,8 @@ public class SQLStrings {
                 "    FOREIGN KEY (user_id) REFERENCES users (id)\n" +
                 ");";
     }
-    public static String createTableCardTransactions (){
+
+    public static String createTableCardTransactions() {
         return "CREATE TABLE card_transactions\n" +
                 "(\n" +
                 "    id                CHAR(36) PRIMARY KEY,\n" +
@@ -57,7 +60,16 @@ public class SQLStrings {
                 ");";
     }
 
+    public static String allUsers() {
+        return "SELECT * FROM users;";
+    }
 
+    public static String getUserId(){
+        return "SELECT id, login FROM users;";
+    }
 
+    public static String insertAuthCode(String number, String userId, String code) {
+        return "INSERT INTO auth_codes (" + number + ", " + userId + ", " + code + ")";
+    }
 
 }
