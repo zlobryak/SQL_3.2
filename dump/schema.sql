@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS users;
 CREATE TABLE users
 (
     id       CHAR(36) PRIMARY KEY,
