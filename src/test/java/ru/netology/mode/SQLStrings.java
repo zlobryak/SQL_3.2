@@ -65,10 +65,10 @@ public class SQLStrings {
     }
 
     public static String getUserId(){
-        return "SELECT id, login FROM users;";
+        return "SELECT id FROM users WHERE login = 'vasya';";
     }
 
-    public static String insertAuthCode(String number, String userId, String code) {
+    public static String setuthCode(String number, String userId, String code) {
         return "INSERT INTO auth_codes (" + number + ", " + userId + ", " + code + ")";
     }
 

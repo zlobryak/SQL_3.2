@@ -23,6 +23,7 @@ DELETE FROM auth_codes WHERE created < NOW() - INTERVAL 5 MINUTE;
 
 -- выборка всех столбцов и всех строк из таблицы users (будьте осторожны на больших таблицах)
 SELECT * FROM users;
+
 -- выборка только определённых столбцов
 SELECT id, login FROM users;
 -- выборка по условию

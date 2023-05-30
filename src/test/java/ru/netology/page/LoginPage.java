@@ -16,7 +16,7 @@ public class LoginPage {
     }
     public void manualValidLogin(String user, String password){
         loginField.setValue(user);
-        passwordField.setValue(user);
+        passwordField.setValue(password);
         actionLogin.click();
     }
 }
