@@ -15,23 +15,28 @@ public class AuthCodePage {
     private SelenideElement authCodeField = $("[data-test-id=code] input");
     private SelenideElement authCodeButton = $("[data-test-id=action-verify]");
 
-    private String authCode;
     @SneakyThrows
-    public void authCodeEnter() {
+    private String authCode() {
         var runner = new QueryRunner();
+        var authCodeSQl = "SELECT code FROM auth_codes WHERE user_id='04b98f30-59a4-4781-8f20-5e6f9bd8c973';";
+        String authCode;
         try (
                 var connection = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3306/app", "app", "pass"
                 )
         ) {
+            authCode = runner.query(connection, authCodeSQl,
+                    new BeanHandler<>(String.class));
 
-            var user = runner.query(connection, SQLStrings.getUserId(), new BeanHandler<>(User.class));
-            authCode = "SELECT * FROM auth_codes WHERE user_id = '" + user.getId() +"'";
-            authCodeField.setValue(authCode);
-            authCodeButton.click();
         }
-
+        return authCode;
     }
 
+
+    public void authCodeEnter() {
+        authCodeField.setValue(authCode());
+        authCodeButton.click();
+
+    }
 
 }

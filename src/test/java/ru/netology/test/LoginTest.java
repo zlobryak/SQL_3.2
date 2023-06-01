@@ -5,6 +5,8 @@ import com.github.javafaker.Faker;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -51,9 +53,22 @@ public class LoginTest {
         LoginPage loginPage = new LoginPage();
         AuthCodePage authCodePage = new AuthCodePage();
 
+        var codesSQL = "SELECT code FROM auth_codes WHERE user_id='57ab3934-8887-4779-8133-960005c03709';";
+
+        var runner = new QueryRunner();
+
 
         open("http://localhost:9999");
         loginPage.manualValidLogin("vasya", "qwerty123");
         authCodePage.authCodeEnter();
+
+        try (
+                var conn = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/app", "app", "pass"
+                )
+        ) {
+            var first = runner.query(conn, codesSQL, new BeanHandler<>(String.class));
+            System.out.println(first);
+        }
     }
 }

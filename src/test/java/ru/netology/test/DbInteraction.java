@@ -27,14 +27,14 @@ public class DbInteraction {
                 )
 
         ) {
-            runner.update(connection, SQLStrings.auth_codesDrop());
-            runner.update(connection, SQLStrings.card_transactionsDrop());
-            runner.update(connection, SQLStrings.cardsDrop());
-            runner.update(connection, SQLStrings.usersDrop());
-            runner.update(connection, SQLStrings.createTableUsers());
-            runner.update(connection, SQLStrings.createTableCards());
-            runner.update(connection, SQLStrings.createTableAuthCodes());
-            runner.update(connection, SQLStrings.createTableCardTransactions());
+//            runner.update(connection, SQLStrings.auth_codesDrop());
+//            runner.update(connection, SQLStrings.card_transactionsDrop());
+//            runner.update(connection, SQLStrings.cardsDrop());
+//            runner.update(connection, SQLStrings.usersDrop());
+//            runner.update(connection, SQLStrings.createTableUsers());
+//            runner.update(connection, SQLStrings.createTableCards());
+//            runner.update(connection, SQLStrings.createTableAuthCodes());
+//            runner.update(connection, SQLStrings.createTableCardTransactions());
             runner.update(connection, dataSQL, 6, faker.name().username(), "pass");
         }
     }

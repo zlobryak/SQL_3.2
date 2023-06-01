@@ -60,16 +60,12 @@ public class SQLStrings {
                 ");";
     }
 
-    public static String allUsers() {
-        return "SELECT * FROM users;";
-    }
-
     public static String getUserId(){
-        return "SELECT id FROM users WHERE login = 'vasya';";
+        return "SELECT id FROM users WHERE login ='vasya';";
     }
 
-    public static String setuthCode(String number, String userId, String code) {
-        return "INSERT INTO auth_codes (" + number + ", " + userId + ", " + code + ")";
+    public static String getAuthCodeById(String id){
+        return "SELECT code FROM auth_codes WHERE user_id='" + id + "';";
     }
 
 }

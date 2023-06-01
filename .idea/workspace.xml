@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1613a3a6-91cd-415d-8c7b-ae1b6130038e" name="Changes" comment="Login and password stage clear">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/mode/SQLStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/mode/SQLStrings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/page/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/mode/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/mode/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/test/DbInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/test/DbInteraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/test/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/test/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/requests.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/requests.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,9 @@
     </ExecCommand>
     <ExecCommand>
       <option name="command" value="SHOW TABLES;" />
+    </ExecCommand>
+    <ExecCommand>
+      <option name="command" value="docker-compose exec mysqldb mysql -u app app -p " />
     </ExecCommand>
   </component>
   <component name="ExternalProjectsData">
@@ -182,9 +185,14 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+    <configuration name="docker-compose.yml.mysql: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
+          <option name="services">
+            <list>
+              <option value="mysql" />
+            </list>
+          </option>
           <option name="sourceFilePath" value="docker-compose.yml" />
         </settings>
       </deployment>
@@ -194,9 +202,9 @@
       <list>
         <item itemvalue="Gradle.LoginTest.loginTest" />
         <item itemvalue="JAR Application.app-deadline.jar" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Gradle.DbInteraction.stubTest" />
+        <item itemvalue="Docker.docker-compose.yml.mysql: Compose Deployment" />
         <item itemvalue="Gradle.DbInteraction" />
+        <item itemvalue="Gradle.DbInteraction.stubTest" />
       </list>
     </recent_temporary>
   </component>
@@ -270,9 +278,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/netology/mode/SQLStrings.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ru/netology/mode/User.java</url>
           <line>27</line>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
