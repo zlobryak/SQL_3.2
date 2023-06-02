@@ -6,6 +6,7 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import ru.netology.mode.AuthCode;
 import ru.netology.mode.SQLStrings;
+import ru.netology.mode.User;
 
 import java.sql.DriverManager;
 
@@ -14,8 +15,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class AuthCodePage {
     private SelenideElement authCodeField = $("[data-test-id=code] input");
     private SelenideElement authCodeButton = $("[data-test-id=action-verify]");
-
-    private String authCode;
 
     @SneakyThrows
     public String getAuthCode() {
@@ -48,6 +47,11 @@ public class AuthCodePage {
         }
 
         return id.getId();
+    }
+
+    public void codeEnter (String code){
+        authCodeField.setValue(code);
+        authCodeButton.click();
     }
 
 

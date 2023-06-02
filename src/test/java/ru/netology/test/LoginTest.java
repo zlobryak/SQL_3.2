@@ -55,6 +55,7 @@ public class LoginTest {
         open("http://localhost:9999");
         loginPage.manualValidLogin("vasya", "qwerty123");
         var code = authCodePage.getAuthCode();
+        authCodePage.codeEnter(code);
     }
 
     @Test
