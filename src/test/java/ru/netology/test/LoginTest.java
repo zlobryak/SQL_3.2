@@ -1,7 +1,7 @@
 package ru.netology.test;
 
 import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
+
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -54,6 +54,12 @@ public class LoginTest {
 
         open("http://localhost:9999");
         loginPage.manualValidLogin("vasya", "qwerty123");
-        authCodePage.authCodeEnter();
+        var code = authCodePage.getAuthCode();
+    }
+
+    @Test
+    void  getCode(){
+        AuthCodePage page = new AuthCodePage();
+        System.out.println(page.getAuthCode());
     }
 }

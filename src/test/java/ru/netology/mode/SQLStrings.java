@@ -68,8 +68,8 @@ public class SQLStrings {
         return "SELECT id FROM users WHERE login = 'vasya';";
     }
 
-    public static String setuthCode(String number, String userId, String code) {
-        return "INSERT INTO auth_codes (" + number + ", " + userId + ", " + code + ")";
+    public static String getAuthCode (String userId){
+        return "SELECT code FROM auth_codes WHERE user_id = '" + userId + "';";
     }
 
 }

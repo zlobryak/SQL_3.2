@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1613a3a6-91cd-415d-8c7b-ae1b6130038e" name="Changes" comment="Login and password stage clear">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java" afterDir="false" />
+    <list default="true" id="1613a3a6-91cd-415d-8c7b-ae1b6130038e" name="Changes" comment="Some issue with auth_code">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/netology/mode/AuthCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/mode/SQLStrings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/mode/SQLStrings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/page/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/test/DbInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/test/DbInteraction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/test/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/test/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/requests.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/requests.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +85,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.netology.mode" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/artifacts" />
     </key>
@@ -93,8 +97,13 @@
       <recent name="$PROJECT_DIR$/docker-entrypoint-initdb.d/dump" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.LoginTest.loginTest">
-    <configuration name="DbInteraction" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle clean" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.LoginTest.getCode">
+    <configuration name="LoginTest.getCode" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -107,31 +116,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;ru.netology.test.DbInteraction&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>true</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <configuration name="DbInteraction.stubTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;ru.netology.test.DbInteraction.stubTest&quot;" />
+            <option value="&quot;ru.netology.test.LoginTest.getCode&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -166,6 +151,28 @@
       <ForceTestExec>true</ForceTestExec>
       <method v="2" />
     </configuration>
+    <configuration name="SQL_3.2 [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
     <configuration name="app-deadline.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/artifacts/app-deadline.jar" />
       <method v="2" />
@@ -192,11 +199,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.LoginTest.getCode" />
         <item itemvalue="Gradle.LoginTest.loginTest" />
+        <item itemvalue="Gradle.SQL_3.2 [clean]" />
         <item itemvalue="JAR Application.app-deadline.jar" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Gradle.DbInteraction.stubTest" />
-        <item itemvalue="Gradle.DbInteraction" />
       </list>
     </recent_temporary>
   </component>
@@ -244,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685479303865</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Some issue with auth_code">
+      <created>1685485505653</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685485505653</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -264,17 +278,7 @@
     <MESSAGE value="DB interaction test from lecture added" />
     <MESSAGE value="BeforeEach and AfterEach annotations fixed to make tables default again" />
     <MESSAGE value="Login and password stage clear" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login and password stage clear" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java</url>
-          <line>27</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Some issue with auth_code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some issue with auth_code" />
   </component>
 </project>
