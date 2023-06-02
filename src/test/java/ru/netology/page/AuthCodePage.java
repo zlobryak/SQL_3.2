@@ -1,14 +1,16 @@
 package ru.netology.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import ru.netology.mode.AuthCode;
-import ru.netology.mode.SQLStrings;
-import ru.netology.mode.User;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
+import ru.netology.data.AuthCode;
+import ru.netology.data.SQLStrings;
 
 import java.sql.DriverManager;
+import java.util.List;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -19,7 +21,8 @@ public class AuthCodePage {
     @SneakyThrows
     public String getAuthCode() {
         var runner = new QueryRunner();
-        AuthCode authCode;
+
+        List<AuthCode> authCode;
         try (
                 var connection = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3306/app", "app", "pass"
@@ -27,10 +30,10 @@ public class AuthCodePage {
 
         ) {
 
-            authCode = runner.query(connection, SQLStrings.getAuthCode(getUserId()), new BeanHandler<>(AuthCode.class));
+            authCode = runner.query(connection, SQLStrings.getAuthCode(getUserId()), new BeanListHandler<>(AuthCode.class));
 
         }
-        return authCode.getCode();
+        return String.valueOf(authCode.get(authCode.size()-1));
 
     }
 
@@ -41,7 +44,7 @@ public class AuthCodePage {
         try (
                 var connection = DriverManager.getConnection(
                         "jdbc:mysql://localhost:3306/app", "app", "pass"
-                );
+                )
         ) {
             id = runner.query(connection, SQLStrings.getUserId(), new BeanHandler<>(AuthCode.class));
         }
@@ -52,6 +55,9 @@ public class AuthCodePage {
     public void codeEnter (String code){
         authCodeField.setValue(code);
         authCodeButton.click();
+
+        $("[data-test-id=dashboard]")
+                .shouldHave(Condition.text("Личный кабинет"));
     }
 
 

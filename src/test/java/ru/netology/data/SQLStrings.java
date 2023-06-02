@@ -1,4 +1,4 @@
-package ru.netology.mode;
+package ru.netology.data;
 
 public class SQLStrings {
     public static String usersDrop() {
