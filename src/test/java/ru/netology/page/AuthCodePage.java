@@ -4,10 +4,10 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import ru.netology.data.AuthCode;
 import ru.netology.data.SQLStrings;
+import ru.netology.data.User;
 
 import java.sql.DriverManager;
 import java.util.List;
@@ -30,26 +30,11 @@ public class AuthCodePage {
 
         ) {
 
-            authCode = runner.query(connection, SQLStrings.getAuthCode(getUserId()), new BeanListHandler<>(AuthCode.class));
+            authCode = runner.query(connection, SQLStrings.getAuthCode(User.getUserId()), new BeanListHandler<>(AuthCode.class));
 
         }
         return String.valueOf(authCode.get(authCode.size()-1));
 
-    }
-
-    @SneakyThrows
-    public String getUserId() {
-        var runner = new QueryRunner();
-        AuthCode id;
-        try (
-                var connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/app", "app", "pass"
-                )
-        ) {
-            id = runner.query(connection, SQLStrings.getUserId(), new BeanHandler<>(AuthCode.class));
-        }
-
-        return id.getId();
     }
 
     public void codeEnter (String code){

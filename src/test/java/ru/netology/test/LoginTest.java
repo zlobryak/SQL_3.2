@@ -18,7 +18,7 @@ import java.sql.DriverManager;
 public class LoginTest {
     @AfterAll
     @SneakyThrows
-    void cleanUp() {
+    static void cleanUp() {
         var runner = new QueryRunner();
         try (
                 var connection = DriverManager.getConnection(
