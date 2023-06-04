@@ -1,8 +1,5 @@
 package ru.netology.page;
-
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
@@ -14,8 +11,7 @@ public class LoginPage {
         loginField.setValue(user);
         passwordField.setValue(password);
         actionLogin.click();
-
-        $("[class='App_appContainer__3jRx1'] p")
-                .shouldHave(Condition.text("Необходимо подтверждение"));
     }
+
+
 }

@@ -6,8 +6,9 @@ import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import ru.netology.data.AuthCode;
-import ru.netology.data.SQLStrings;
-import ru.netology.data.User;
+import ru.netology.data.DBInteraction;
+import ru.netology.resources.SQLStrings;
+
 
 import java.sql.DriverManager;
 import java.util.List;
@@ -30,19 +31,20 @@ public class AuthCodePage {
 
         ) {
 
-            authCode = runner.query(connection, SQLStrings.getAuthCode(User.getUserId()), new BeanListHandler<>(AuthCode.class));
+            authCode = runner.query(connection, SQLStrings.getAuthCode(DBInteraction.getUserId()), new BeanListHandler<>(AuthCode.class));
 
         }
-        return String.valueOf(authCode.get(authCode.size()-1));
+        return String.valueOf(authCode.get(authCode.size() - 1));
 
     }
 
-    public void codeEnter (String code){
+    public void codeEnter(String code) {
         authCodeField.setValue(code);
         authCodeButton.click();
-
-        $("[data-test-id=dashboard]")
-                .shouldHave(Condition.text("Личный кабинет"));
+    }
+    public void shouldBeVisible(){
+        $("[id='root'] p")
+                .shouldHave(Condition.text("Необходимо подтверждение"));
     }
 
 
