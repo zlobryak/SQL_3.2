@@ -34,16 +34,13 @@ public class LoginTest {
 
         open("http://localhost:9999");
         LoginPage loginPage = new LoginPage();
-        loginPage.shouldBeVisible();
         loginPage.manualValidLogin(user.getLogin(), user.getPassword());
 
         AuthCodePage authCodePage = new AuthCodePage();
-        authCodePage.shouldBeVisible();
         var code = DBInteraction.getAuthCode();
         authCodePage.codeEnter(code);
 
         DashboardPage dashboardPage = new DashboardPage();
-        dashboardPage.shouldBeVisible();
     }
 
 }

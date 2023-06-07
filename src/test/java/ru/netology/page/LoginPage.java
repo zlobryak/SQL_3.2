@@ -10,13 +10,20 @@ public class LoginPage {
     private SelenideElement passwordField = $("[data-test-id=password] input");
     private SelenideElement actionLogin = $("[data-test-id=action-login]");
 
+    public LoginPage() {
+        loginField.shouldBe(Condition.visible);
+        passwordField.shouldBe(Condition.visible);
+        actionLogin.shouldBe(Condition.visible);
+        LoginPage.headinShouldBeVisible();
+    }
+
     public void manualValidLogin(String user, String password) {
         loginField.setValue(user);
         passwordField.setValue(password);
         actionLogin.click();
     }
 
-    public void shouldBeVisible() {
+    public static void headinShouldBeVisible() {
         $("[id='root'] p")
                 .shouldHave(Condition.text("Мы гарантируем безопасность ваших данных"));
     }
