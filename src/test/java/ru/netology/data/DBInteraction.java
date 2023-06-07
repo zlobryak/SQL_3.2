@@ -3,11 +3,19 @@ package ru.netology.data;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import ru.netology.resources.SQLStrings;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.DriverManager;
+import java.util.List;
 
 public class DBInteraction {
+    public static String truncateTable(String tableName){
+        return "TRUNCATE TABLE app." + tableName +";";
+    }
+
+    public static String getAuthCode (String userId){
+        return "SELECT code FROM auth_codes WHERE user_id = '" + userId + "';";
+    }
     @SneakyThrows
     public static String getUserId() {
         var runner = new QueryRunner();
@@ -17,7 +25,12 @@ public class DBInteraction {
                         "jdbc:mysql://localhost:3306/app", "app", "pass"
                 )
         ) {
-            id = runner.query(connection, SQLStrings.getUserId(), new BeanHandler<>(AuthCode.class));
+            id = runner.query
+                    (
+                            connection,
+                            "SELECT id FROM users WHERE login = 'vasya';",
+                            new BeanHandler<>(AuthCode.class)
+                    );
         }
 
         return id.getId();
@@ -37,13 +50,31 @@ public class DBInteraction {
                 )
 
         ) {
-            runner.update(connection, SQLStrings.truncateTable("auth_codes"));
-            runner.update(connection, SQLStrings.truncateTable("card_transactions"));
-            runner.update(connection, SQLStrings.truncateTable("cards"));
-            runner.update(connection, SQLStrings.foreignKeyOff());
-            runner.update(connection, SQLStrings.truncateTable("users"));
-            runner.update(connection, SQLStrings.foreignKeyOn());
+            runner.update(connection, truncateTable("auth_codes"));
+            runner.update(connection, truncateTable("card_transactions"));
+            runner.update(connection, truncateTable("cards"));
+            runner.update(connection, "SET FOREIGN_KEY_CHECKS = 0;");
+            runner.update(connection, truncateTable("users"));
+            runner.update(connection, "SET FOREIGN_KEY_CHECKS = 1;");
         }
     }
 
+    @SneakyThrows
+    public static String getAuthCode() {
+        var runner = new QueryRunner();
+
+        List<AuthCode> authCode;
+        try (
+                var connection = DriverManager.getConnection(
+                        "jdbc:mysql://localhost:3306/app", "app", "pass"
+                )
+
+        ) {
+
+            authCode = runner.query(connection, getAuthCode(getUserId()), new BeanListHandler<>(AuthCode.class));
+
+        }
+        return String.valueOf(authCode.get(authCode.size() - 1));
+
+    }
 }

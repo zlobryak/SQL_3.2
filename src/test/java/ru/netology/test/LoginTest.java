@@ -1,5 +1,6 @@
 package ru.netology.test;
 
+//import com.codeborne.selenide.Configuration;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
@@ -21,25 +22,28 @@ public class LoginTest {
 
     @Test
     @DisplayName("Should login")
+    @SneakyThrows
     void loginTest() {
 //        Configuration.holdBrowserOpen = true;
-
-        LoginPage loginPage = new LoginPage();
-        AuthCodePage authCodePage = new AuthCodePage();
-        DashboardPage dashboardPage = new DashboardPage();
         User user = new User(
                 DBInteraction.getUserId(),
                 DBInteraction.getUserLogin(),
                 DBInteraction.getUserPassword()
         );
 
-        open("http://localhost:9999");
 
-        loginPage.manualValidLogin(user.getLogin(), user.getPassword()); //Водит заранее заданные логин и парольи проверяет открытие страницы ввода проверочного кода
-        authCodePage.shouldBeVisible(); //Проверяет открыте страницы подтверждения
-        var code = authCodePage.getAuthCode(); //Берет код из базы данных
-        authCodePage.codeEnter(code); //Вводит код и проверяте открытие страницы "Личный кабинет"
-        dashboardPage.shouldBeVisible(); //Проверяет открытие личного кабинета
+        open("http://localhost:9999");
+        LoginPage loginPage = new LoginPage();
+        loginPage.shouldBeVisible();
+        loginPage.manualValidLogin(user.getLogin(), user.getPassword());
+
+        AuthCodePage authCodePage = new AuthCodePage();
+        authCodePage.shouldBeVisible();
+        var code = DBInteraction.getAuthCode();
+        authCodePage.codeEnter(code);
+
+        DashboardPage dashboardPage = new DashboardPage();
+        dashboardPage.shouldBeVisible();
     }
 
 }
