@@ -14,18 +14,21 @@ public class LoginPage {
         loginField.shouldBe(Condition.visible);
         passwordField.shouldBe(Condition.visible);
         actionLogin.shouldBe(Condition.visible);
-        LoginPage.headinShouldBeVisible();
+        headingShouldBeVisible();
     }
 
-    public void manualValidLogin(String user, String password) {
+    public AuthCodePage manualValidLogin(String user, String password) {
         loginField.setValue(user);
         passwordField.setValue(password);
         actionLogin.click();
+        return new AuthCodePage();
     }
 
-    public static void headinShouldBeVisible() {
+    public void headingShouldBeVisible() {
         $("[id='root'] p")
                 .shouldHave(Condition.text("Мы гарантируем безопасность ваших данных"));
     }
+
+    //todo: тут должны быть методы обработки ошибок и вввода неверных значений
 
 }

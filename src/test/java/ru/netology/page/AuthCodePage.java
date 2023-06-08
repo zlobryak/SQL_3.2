@@ -13,16 +13,30 @@ public class AuthCodePage {
     public AuthCodePage() {
         authCodeField.shouldBe(Condition.visible);
         authCodeButton.shouldBe(Condition.visible);
-        AuthCodePage.headingShouldBeVisible();
+        headingShouldBeVisible();
     }
 
-    public void codeEnter(String code) {
+    public DashboardPage codeEnter(String code) {
         authCodeField.setValue(code);
         authCodeButton.click();
+        return new DashboardPage();
     }
-    public static void headingShouldBeVisible(){
+
+    public void wrongCodeEnter() {
+        authCodeField.setValue("0");
+        authCodeButton.click();
+        errorMessage();
+    }
+
+    public void headingShouldBeVisible() {
         $("[id='root'] p")
                 .shouldHave(Condition.text("Необходимо подтверждение"));
+    }
+
+    public void errorMessage() {
+        $("[data-test-id='error-notification']")
+                .shouldHave(Condition.text("Неверно указан код! Попробуйте ещё раз"));
+
     }
 
 

@@ -1,6 +1,6 @@
 package ru.netology.test;
 
-//import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Configuration;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
@@ -32,15 +32,28 @@ public class LoginTest {
         );
 
 
-        open("http://localhost:9999");
-        LoginPage loginPage = new LoginPage();
-        loginPage.manualValidLogin(user.getLogin(), user.getPassword());
-
-        AuthCodePage authCodePage = new AuthCodePage();
+        LoginPage loginPage = open("http://localhost:9999", LoginPage.class);
+        AuthCodePage authCodePage = loginPage.manualValidLogin(user.getLogin(), user.getPassword());
+;
         var code = DBInteraction.getAuthCode();
-        authCodePage.codeEnter(code);
-
-        DashboardPage dashboardPage = new DashboardPage();
+        DashboardPage dashboardPage = authCodePage.codeEnter(code);
     }
+
+    @Test
+    @DisplayName("Wrong auth_code message should be visible")
+    @SneakyThrows
+    void wrongAuthCodeTest() {
+//        Configuration.holdBrowserOpen = true;
+        User user = new User(
+                DBInteraction.getUserId(),
+                DBInteraction.getUserLogin(),
+                DBInteraction.getUserPassword()
+        );
+
+        LoginPage loginPage = open("http://localhost:9999", LoginPage.class);
+        AuthCodePage authCodePage = loginPage.manualValidLogin(user.getLogin(), user.getPassword());
+        authCodePage.wrongCodeEnter();
+    }
+
 
 }

@@ -6,10 +6,10 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class DashboardPage {
     public DashboardPage() {
-        DashboardPage.headingShouldBeVisible();
+        headingShouldBeVisible();
     }
 
-    public static void headingShouldBeVisible(){
+    public void headingShouldBeVisible(){
         $("[data-test-id=dashboard]")
                 .shouldHave(Condition.text("Личный кабинет"));
     }
