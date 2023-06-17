@@ -28,7 +28,7 @@ public class DBInteraction {
             id = runner.query
                     (
                             connection,
-                            "SELECT id FROM users WHERE login = 'vasya';",
+                            "SELECT id FROM users WHERE login = '" + DataHelper.getUserLogin() + "';",
                             new BeanHandler<>(DataHelper.AuthCode.class)
                     );
         }

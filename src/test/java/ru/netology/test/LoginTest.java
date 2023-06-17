@@ -22,8 +22,7 @@ public class LoginTest {
     void loginTest() {
 //        Configuration.holdBrowserOpen = true;
         LoginPage loginPage = open("http://localhost:9999", LoginPage.class);
-        AuthCodePage authCodePage = loginPage
-                .manualValidLogin(DataHelper.getUserLogin(), DataHelper.getUserPassword());
+        AuthCodePage authCodePage = loginPage                .manualValidLogin(DataHelper.getUserLogin(), DataHelper.getUserPassword());
         var code = DBInteraction.getAuthCode();
         authCodePage.codeEnter(code);
     }
