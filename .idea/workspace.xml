@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1613a3a6-91cd-415d-8c7b-ae1b6130038e" name="Changes" comment="Have working SQL strings.">
+    <list default="true" id="1613a3a6-91cd-415d-8c7b-ae1b6130038e" name="Changes" comment="Constructors edited. Tests rewrote.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ru/netology/data/DataHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/page/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/DashboardPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/page/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/page/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/data/AuthCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/data/DBInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/data/DBInteraction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/data/User.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ru/netology/test/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/netology/test/LoginTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +101,7 @@
       <recent name="$PROJECT_DIR$/docker-entrypoint-initdb.d/dump" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.LoginTest.loginTest">
+  <component name="RunManager" selected="Gradle.LoginTest">
     <configuration name="LoginTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -204,10 +205,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.LoginTest.loginTest" />
-        <item itemvalue="JAR Application.app-deadline.jar" />
-        <item itemvalue="Gradle.LoginTest.wrongAuthCodeTest" />
         <item itemvalue="Gradle.LoginTest" />
+        <item itemvalue="JAR Application.app-deadline.jar" />
+        <item itemvalue="Gradle.LoginTest.loginTest" />
+        <item itemvalue="Gradle.LoginTest.wrongAuthCodeTest" />
         <item itemvalue="Docker.docker-compose.yml.mysql: Compose Deployment" />
       </list>
     </recent_temporary>
@@ -256,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685479303865</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Constructors edited. Tests rewrote.">
+      <created>1686187069102</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686187069102</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,7 +284,8 @@
     <MESSAGE value="DB interaction test from lecture added" />
     <MESSAGE value="BeforeEach and AfterEach annotations fixed to make tables default again" />
     <MESSAGE value="Login and password stage clear" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login and password stage clear" />
+    <MESSAGE value="Constructors edited. Tests rewrote." />
+    <option name="LAST_COMMIT_MESSAGE" value="Constructors edited. Tests rewrote." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -285,11 +294,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/ru/netology/mode/SQLStrings.java</url>
           <line>67</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ru/netology/page/AuthCodePage.java</url>
-          <line>11</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/netology/mode/User.java</url>
